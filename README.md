@@ -1,4 +1,4 @@
-# 🚘 SQLCoding – Based Vehicle Leasing System
+# 🚘 SQLCoding – Vehicle Leasing System
 
 This project showcases a SQL-based Car Rental System, developed as part of a coding challenge. It includes complete database design, data manipulation, and analytical queries for managing vehicles, customers, leases, and payments.
 
