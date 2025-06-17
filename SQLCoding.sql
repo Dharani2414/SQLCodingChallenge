@@ -307,10 +307,17 @@ WHERE Lease.endDate >= GETDATE();
 
 
 --17. Find the Customer Who Has Spent the Most on Leases. 
-SELECT Customer.CustomerId,Customer.firstName,Customer.lastName ,MAX(Payment.amount)AS Paymentamount FROM Customer 
-JOIN Lease ON Customer.CustomerId=Lease.CustomerID 
-JOIN Payment ON Lease.leaseID=Payment.leaseID
-GROUP BY Customer.CustomerId,Customer.firstName,Customer.lastName;
+SELECT TOP 1 
+    Customer.CustomerId,
+    Customer.firstName,
+    Customer.lastName,
+    SUM(Payment.amount) AS TotalSpent
+FROM Customer 
+JOIN Lease ON Customer.CustomerId = Lease.CustomerID 
+JOIN Payment ON Lease.leaseID = Payment.leaseID
+GROUP BY Customer.CustomerId, Customer.firstName, Customer.lastName
+ORDER BY TotalSpent DESC;
+
 
 
 --18. List All Cars with Their Current Lease Information. 
